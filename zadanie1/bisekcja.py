@@ -1,28 +1,30 @@
 class Bisekcja:
     def __init__ (self, f, a, b, epsilon):
-        self.f = f # funckja ktory liczy wartosc wielomianu
-        self.a = a # poczatek przedzialu
-        self.b = b # koniec przedzialu
-        self.epsilon = epsilon # dokladnosc
+        self.f = f
+        self.a = a 
+        self.b = b 
+        self.epsilon = epsilon
         self.previous = 0
-        self.iteracje = 0 
-    
-    def calculate (self, max_iter, variant):
-        if variant == 1:
-            while((self.b - self.a) / 2 - self.previous) > self.epsilon:
-                x = (self.a + self.b) / 2
-                if self.f.calculate(x):
+        self.current = (self.b - self.a) / 2
+        self.iterations = 0 
 
+    def calculate (self, variant, max_iter=0):
+        while True:
+            self.current = (self.a + self.b) / 2
+            # TODO zrobic dla innych wartosci w zaleznosci od funkcji
+            current_value = self.f.horner(self.current)
 
-
-        # while (self.b - self.a) / 2 > self.epsilon and self.iteracje < max_iter:
-        #     c = (self.a + self.b) / 2
-        #     if self.f(c) == 0:
-        #         self.iteracje += 1
-        #         return c, self.iteracje
-        #     elif self.f(c) * self.f(self.a) < 0:
-        #         self.b = c
-        #     else:
-        #         self.a = c
-        #     self.iteracje += 1
-        # return c, self.iteracje
+            if current_value == 0 or (variant == 1 and abs(self.current - self.previous) < self.epsilon) or (variant == 1 and abs(current_value) < self.epsilon):
+                self.iterations += 1
+                return self.current, self.iterations
+            
+            if current_value * self.f.horner(self.a) < 0:
+                self.b = self.current
+            else:
+                self.a = self.current
+            
+            self.iterations += 1
+            self.previous = self.current
+            
+            if variant == 2 and self.iterations >= max_iter:
+                return self.current, self.iterations
