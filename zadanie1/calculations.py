@@ -11,20 +11,13 @@ class Calculations:
         return result
     
     def trigonometry(self, x):
-        # TODO zrobic obliczenia dla funkcji trygonometrycznych
-        print("trigonometry")
-        if self.indexes[0] == 1:
-            # sin
+        if self.indexes == 1:
             return np.sin(x)
-        elif self.indexes[0] == 2:
-            # cos
+        elif self.indexes == 2:
             return np.cos(x)
-        elif self.indexes[0] == 3:
-            # tan
+        elif self.indexes == 3:
             return np.tan(x)
         
         
     def exponential(self, x):
-        # TODO zrobic obliczenia dla funkcji wykladniczych
-        print("exponential")
-        return self.indexes[0] ** x
+        return self.indexes ** x

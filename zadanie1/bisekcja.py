@@ -22,7 +22,14 @@ class Bisekcja:
                 self.iterations += 1
                 return self.current, self.iterations
             
-            if current_value * self.f.horner(self.a) < 0:
+            if func == 1:
+                point_value = self.f.horner(self.a)
+            elif func == 2:
+                point_value = self.f.trigonometry(self.a)
+            elif func == 3:
+                point_value = self.f.exponential(self.a)
+            
+            if current_value * point_value < 0:
                 self.b = self.current
             else:
                 self.a = self.current

@@ -1,17 +1,16 @@
 class Menu:
     def stopChoice(self):
         print("Wybierz kryterium stopu: ")
-        print("1. Wariant A - |xi - xi-1| < E")
-        print("2. Wariant B - |f(xi)| < E")
-        print("3. Liczba iteracji ")
+        print("1. Wariant A - |xi - xi-1| < E lub Wariant B - |f(xi)| < E")
+        print("2. Liczba iteracji ")
         stop = []
         variant = int(input("Wybor: "))
         stop.append(variant)
 
-        if variant == 1 or variant == 2:
+        if variant == 1:
             stop.append(float(input("Podaj epsilon: ")))
             return stop
-        elif variant == 3:
+        elif variant == 2:
             stop.append(int(input("Podaj liczbe iteracji: ")))
             return stop
 
