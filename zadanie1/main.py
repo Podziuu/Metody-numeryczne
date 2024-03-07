@@ -13,4 +13,3 @@ stop = menu.stopChoice()
 calculations = Calculations(function[0], function[1])
 bisekcja = Bisekcja(calculations, edges[0], edges[1], stop)
 
-
