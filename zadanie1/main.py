@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 # if stop == 1 or stop == 2:
 #     epsilon = float(input("Podaj epsilon: "))
 # elif stop == 3:
-#     iterations = int(input("Podaj liczbe iteracji: "))
+    # iterations = int(input("Podaj liczbe iteracji: "))
 
 
 print("Podaj funkcje:")
@@ -27,7 +27,7 @@ if choice == 1:
     degree = int(input("Podaj stopien wielomianu: "))
     polynomial = []
     for i in range(degree + 1):
-        polynomial[i] = float(input("Podaj " + str(i + 1) + " wspolczynnik wielomianu: "))
+        polynomial.append(float(input("Podaj " + str(i + 1) + " wspolczynnik wielomianu: ")))
 elif choice == 2:
     print("Wybierz funkcje trygonometryczna:")
     print("1. Sinus")
