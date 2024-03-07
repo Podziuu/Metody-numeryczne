@@ -1,13 +1,6 @@
-class Bisekcja:
-    def __init__ (self, f, a, b, stop):
-        self.f = f
-        self.a = a 
-        self.b = b 
-        self.stop = stop
-        self.previous = 0
-        self.current = (self.b - self.a) / 2
-        self.iterations = 0 
+from method import Method
 
+class Bisekcja(Method):
     def calculate (self, variant, func):
         while True:
             self.current = (self.a + self.b) / 2
