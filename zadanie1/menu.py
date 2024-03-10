@@ -1,3 +1,8 @@
+from horner import Horner
+from trigonometry import Trigonometry
+from exponential import Exponential
+from composite import Composite
+
 class Menu:
     def stopChoice(self):
         print("Wybierz kryterium stopu: ")
@@ -15,33 +20,41 @@ class Menu:
             return stop
 
     def functionChoice(self):
-        print("Podaj funkcje:")
+        print("Wybierz czy funkcja ma byc zlozona:")
+        print("1. Tak")
+        print("2. Nie")
+        choice = int((input("Wybor: ")))
+        if choice == 1:
+            f1 = self.functionCreator()
+            f2 = self.functionCreator()
+            return Composite(f1, f2)
+        elif choice == 2:
+            return self.functionCreator()
+
+    def functionCreator(self):
         print("1. Funkcja wielomianowa")
         print("2. Funkcja trygonometryczna")
         print("3. Funkcja wykladnicza")
-        print("4. Złożenie funkcji")
-        func = []
-        func.append(int(input("Wybor: ")))
+        choice = int((input("Wybor: ")))
 
-        if func[0] == 1:
+        if choice == 1:
             degree = int(input("Podaj stopien wielomianu: "))
             polynomial = []
             for i in range(degree + 1):
                 polynomial.append(float(input("Podaj " + str(i + 1) + " wspolczynnik wielomianu: ")))
-            func.append(polynomial)
-            return func
+            return Horner(polynomial)
 
-        elif func[0] == 2:
+        elif choice == 2:
             print("Wybierz funkcje trygonometryczna:")
             print("1. Sinus")
             print("2. Cosinus")
             print("3. Tangens")
-            func.append(int(input("Wybor: ")))
-            return func
+            fType = (int(input("Wybor: ")))
+            return Trigonometry(fType)
 
-        elif func[0] == 3:
-            func.append(float(input("Podaj podstawe funkcji wykladniczej: ")))
-            return func
+        elif choice == 3:
+            base = (float(input("Podaj podstawe funkcji wykladniczej: ")))
+            return Exponential(base)
 
     def edgesChoice(self):
         print("Wybierz krance przedzialu:")

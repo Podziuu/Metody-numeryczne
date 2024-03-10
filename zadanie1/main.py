@@ -2,26 +2,25 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from menu import Menu
-from calculations import Calculations
 from bisekcja import Bisekcja
+from falsi import Falsi
 
 menu = Menu()
 function = menu.functionChoice()
 edges = menu.edgesChoice()
 stop = menu.stopChoice()
 
-calculations = Calculations(function[1])
-bisekcja = Bisekcja(calculations, edges[0], edges[1], stop[1])
-result = bisekcja.calculate(stop[0], function[0])
+
+bisekcja = Bisekcja(function, edges[0], edges[1], stop[1])
+result = bisekcja.calculate(stop[0])
 print(result)
 
+falsi = Falsi(function, edges[0], edges[1], stop[1])
+result2 = falsi.calculate(stop[0])
+print(result2)
+
 x_values = np.linspace(edges[0], edges[1], 100)
-if function[0] == 1:
-    y_values = calculations.horner(x_values)
-elif function[0] == 2:
-    y_values = calculations.trigonometry(x_values)
-elif function[0] == 3:
-    y_values = calculations.exponential(x_values)
+y_values = function.calculate(x_values)
 
 plt.plot(x_values, y_values, label="f(x)")
 plt.scatter(result[0], 0, color="red", label="Punkt zerowy")
