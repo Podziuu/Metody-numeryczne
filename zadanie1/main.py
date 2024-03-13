@@ -15,9 +15,17 @@ bisekcja = Bisekcja(function, edges[0], edges[1], stop[1])
 result = bisekcja.calculate(stop[0])
 print(result)
 
+if(result == "Error"):
+    print("Metoda nie zbiega")
+    exit()
+
 falsi = Falsi(function, edges[0], edges[1], stop[1])
 result2 = falsi.calculate(stop[0])
 print(result2)
+
+if(result2 == "Error"):
+    print("Metoda nie zbiega")
+    exit()
 
 x_values = np.linspace(edges[0], edges[1], 100)
 y_values = function.calculate(x_values)

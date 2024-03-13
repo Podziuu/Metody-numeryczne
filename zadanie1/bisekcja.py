@@ -4,6 +4,11 @@ class Bisekcja(Method):
     def calculate (self, variant):
         while True:
             self.current = (self.a + self.b) / 2
+            
+            a_value = self.f.calculate(self.a)
+            b_value = self.f.calculate(self.b)
+            
+            if a_value * b_value >= 0: return "Error"
 
             current_value = self.f.calculate(self.current)
 
