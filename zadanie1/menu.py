@@ -20,41 +20,60 @@ class Menu:
             return stop
 
     def functionChoice(self):
-        print("Wybierz czy funkcja ma byc zlozona:")
-        print("1. Tak")
-        print("2. Nie")
-        choice = int((input("Wybor: ")))
-        if choice == 1:
-            f1 = self.functionCreator()
-            f2 = self.functionCreator()
-            return Composite(f1, f2)
-        elif choice == 2:
-            return self.functionCreator()
+        while True:
+            print("Wybierz czy funkcja ma byc zlozona:")
+            print("1. Tak")
+            print("2. Nie")
+            choice = int((input("Wybor: ")))
+            if choice == 1:
+                f1 = self.functionCreator()
+                f2 = self.functionCreator()
+                return Composite(f1, f2)
+            elif choice == 2:
+                return self.functionCreator()
+            else:
+                print("Nie ma takiej opcji! Sprobuj jeszcze raz")
 
     def functionCreator(self):
-        print("1. Funkcja wielomianowa")
-        print("2. Funkcja trygonometryczna")
-        print("3. Funkcja wykladnicza")
-        choice = int((input("Wybor: ")))
+        while True:
+            print("1. Funkcja wielomianowa")
+            print("2. Funkcja trygonometryczna")
+            print("3. Funkcja wykladnicza")
+            choice = int((input("Wybor: ")))
 
-        if choice == 1:
-            degree = int(input("Podaj stopien wielomianu: "))
-            polynomial = []
-            for i in range(degree + 1):
-                polynomial.append(float(input("Podaj " + str(i + 1) + " wspolczynnik wielomianu: ")))
-            return Horner(polynomial)
+            if choice == 1:
+                while True:
+                    degree = int(input("Podaj stopien wielomianu: "))
+                    if degree > 0:
+                        polynomial = []
+                        for i in range(degree + 1):
+                            polynomial.append(float(input("Podaj " + str(i + 1) + " wspolczynnik wielomianu: ")))
+                        return Horner(polynomial)
+                    else:
+                        print("Podaj prawidlowy stopien wielomianu")
 
-        elif choice == 2:
-            print("Wybierz funkcje trygonometryczna:")
-            print("1. Sinus")
-            print("2. Cosinus")
-            print("3. Tangens")
-            fType = (int(input("Wybor: ")))
-            return Trigonometry(fType)
+            elif choice == 2:
+                while True:
+                    print("Wybierz funkcje trygonometryczna:")
+                    print("1. Sinus")
+                    print("2. Cosinus")
+                    print("3. Tangens")
+                    fType = (int(input("Wybor: ")))
+                    if fType == [1, 2, 3]:
+                        return Trigonometry(fType)
+                    else:
+                        print("Wybierz poprawna opcje")
 
-        elif choice == 3:
-            base = (float(input("Podaj podstawe funkcji wykladniczej: ")))
-            return Exponential(base)
+            elif choice == 3:
+                while True:
+                    base = (float(input("Podaj podstawe funkcji wykladniczej: ")))
+                    if base > 0 and base != 1:
+                        return Exponential(base)
+                    else:
+                        print("Podaj poprawna podstawe")
+
+            else:
+                print("Wybierz poprawna opcje")
 
     def edgesChoice(self):
         print("Wybierz krance przedzialu:")
