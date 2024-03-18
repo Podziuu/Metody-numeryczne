@@ -6,7 +6,10 @@ class Falsi(Method):
             a_value = self.f.calculate(self.a)
             b_value = self.f.calculate(self.b)
             
-            if(a_value * b_value >= 0): return "Error"
+            if(b_value == 0): return self.b, self.iterations
+            if(a_value == 0): return self.a, self.iterations
+            
+            if a_value * b_value >= 0: return "Error"
 
             self.current = self.a - (a_value * (self.b - self.a)) / (b_value - a_value)
             
