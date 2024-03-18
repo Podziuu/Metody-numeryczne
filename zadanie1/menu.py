@@ -5,19 +5,33 @@ from composite import Composite
 
 class Menu:
     def stopChoice(self):
-        print("Wybierz kryterium stopu: ")
-        print("1. Wariant A - |xi - xi-1| < E lub Wariant B - |f(xi)| < E")
-        print("2. Liczba iteracji ")
-        stop = []
-        variant = int(input("Wybor: "))
-        stop.append(variant)
+        while True:
+            print("Wybierz kryterium stopu: ")
+            print("1. Wariant A - |xi - xi-1| < E lub Wariant B - |f(xi)| < E")
+            print("2. Liczba iteracji ")
+            stop = []
+            variant = int(input("Wybor: "))
+            if variant == 1:
+                stop.append(variant)
+                while True:
+                    epsilon = float(input("Podaj epsilon: "))
+                    if epsilon > 0:
+                        stop.append(epsilon)
+                        return stop
+                    else:
+                        print("Podaj poprawna liczbe")
 
-        if variant == 1:
-            stop.append(float(input("Podaj epsilon: ")))
-            return stop
-        elif variant == 2:
-            stop.append(int(input("Podaj liczbe iteracji: ")))
-            return stop
+            elif variant == 2:
+                stop.append(variant)
+                while True:
+                    iterations = (int(input("Podaj liczbe iteracji: ")))
+                    if iterations > 0:
+                        stop.append(iterations)
+                        return stop
+                    else:
+                        print("Podaj poprawna liczbe")
+            else:
+                print("Podaj poprawna opcje")
 
     def functionChoice(self):
         while True:
@@ -59,7 +73,7 @@ class Menu:
                     print("2. Cosinus")
                     print("3. Tangens")
                     fType = (int(input("Wybor: ")))
-                    if fType == [1, 2, 3]:
+                    if fType in [1, 2, 3]:
                         return Trigonometry(fType)
                     else:
                         print("Wybierz poprawna opcje")
