@@ -8,9 +8,6 @@ class Bisekcja(Method):
             a_value = self.f.calculate(self.a)
             b_value = self.f.calculate(self.b)
             
-            if(b_value == 0): return self.b, self.iterations
-            if(a_value == 0): return self.a, self.iterations
-            
             if a_value * b_value >= 0: return "Error"
 
             current_value = self.f.calculate(self.current)
