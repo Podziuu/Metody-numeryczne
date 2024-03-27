@@ -1,3 +1,5 @@
+import numpy as np
+
 class Menu:
     def stopChoice(self):
         while True:
@@ -64,13 +66,13 @@ class Menu:
                         columns = int(dimensions[1])
                         if rows + 1 != columns:
                             raise ValueError("Macierze musza byc kwadratowa")
-                        matrix = []
-                        result = []
+                        matrix = np.zeros((rows, rows))
+                        result = np.zeros(rows)
                         i += 1
-                        for _ in range(rows):
+                        for j in range(rows):
                             row = list(map(float, lines[i].split()))
-                            matrix.append(row[:rows])
-                            result.append(row[-1])
+                            matrix[j, :] = row[:rows]
+                            result[j] = (row[-1])
                             i += 1
                         all_matrices.append(matrix)
                         all_results.append(result)
